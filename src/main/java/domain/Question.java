@@ -1,6 +1,5 @@
 package domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Question{
@@ -10,10 +9,7 @@ public class Question{
 	private List<String> options;
 	
 	//Methods
-	public Question(Survey s){
-		text="";
-		options=new ArrayList<String>();
-	}
+	
 	public String getText(){
 		return text;
 	}

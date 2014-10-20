@@ -1,22 +1,36 @@
 package controllers;
 
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import domain.Greeting;
+import domain.Question;
+import domain.Survey;
 
 @RestController
 @RequestMapping("/vote")
 public class TestController {
-	private static final String template = "Hello, %s!";
-    private final AtomicLong counter = new AtomicLong(); 
+	
 	@RequestMapping("/test")
-	public Greeting greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-		return new Greeting(counter.incrementAndGet(), String.format(template,
-				name));
+	public Survey test(){
+		Survey s = new Survey();
+		s.setDescription("Votación generica");
+		s.setInicio(new Date(System.currentTimeMillis()));
+		s.setFin(new Date(System.currentTimeMillis()));
+		s.setName("Votación 1");
+		List<Question> lq = new LinkedList<Question>();
+		Question q = new Question();
+		List<String> l = new LinkedList<String>();
+		l.add("Si");
+		l.add("No");
+		q.setText("jejej");
+		q.setOptions(l);
+		lq.add(q);
+		s.setQuestions(lq);
+		return s;
 	}
 
 }
