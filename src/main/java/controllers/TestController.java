@@ -14,6 +14,8 @@ import domain.Survey;
 @RequestMapping("/vote")
 public class TestController {
 	
+	
+	
 	@RequestMapping("/test")
 	public Survey test(){
 		Survey s = new Survey();
