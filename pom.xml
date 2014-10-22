@@ -12,8 +12,8 @@
 	<!-- Artifact identification and properties -->
 
 	<groupId>Design-and-Testing</groupId>
-	<artifactId>Sample</artifactId>
-	<version>1.4</version>
+	<artifactId>CreacionAdminVotaciones</artifactId>
+	<version>1.0</version>
 	<packaging>war</packaging>
 
 	<properties>
@@ -22,9 +22,9 @@
 
 	<!-- Indexing information -->
 
-	<name>Sample Project</name>
-	<url>http://www.sample-project.com</url>
-	<description>This is D&amp;T's sample project.</description>
+	<name>CreacionAdminVotaciones Project</name>
+	<url>http://www.creacio-nadministracion-votaciones.com</url>
+	<description>This is D&amp;T's CreacionAdminVotaciones Project.</description>
 
 	<!-- Build commands -->
 
