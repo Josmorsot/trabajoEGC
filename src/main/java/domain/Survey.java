@@ -45,11 +45,21 @@ public class Survey {
 	public Census getCensus(){
 		return census;
 	}
-	
+	public void setCensus(Census c){
+		this.census=c;
+	}
 	public List<Question> getQuestions() {
 		return questions;
 	}
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
+	public void addQuestion(Question q){
+		q.setSurvey(this);
+		questions.add(q);
+	}
+	public void removeQuestion(Question q){
+		questions.remove(q);
+	}
+	
 }
