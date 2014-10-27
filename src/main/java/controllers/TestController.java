@@ -22,7 +22,7 @@ public class TestController {
 		s.setDescription("Votación generica");
 		s.setInicio(new Date(System.currentTimeMillis()));
 		s.setFin(new Date(System.currentTimeMillis()));
-		s.setName("Votación 1");
+		s.setName("Votación 10s");
 		List<Question> lq = new LinkedList<Question>();
 		Question q = new Question();
 		List<String> l = new LinkedList<String>();
