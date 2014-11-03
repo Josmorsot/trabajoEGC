@@ -27,10 +27,11 @@ public class SurveyService {
 	public void save(Survey s){
 		String cookie = ""; //COOKIE DE LA CONEXIÓN
 		Assert.notNull(s);
-		Assert.isTrue(isAuthenticated(cookie));
+//		Assert.isTrue(isAuthenticated(cookie));
 		
 		for (Question o:s.getQuestions()){
 			questionService.save(o,s);
+			System.out.println(o);
 		}
 		surveyRepository.save(s);
 	}
