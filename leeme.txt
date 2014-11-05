@@ -1,4 +1,5 @@
 Este es el fichero leeme de Creacion y Administración de Votaciones
 José Iván Moreno Soto
 Vallejo Morales, Mercedes
-Pérez Reina, Mariá
+Pérez Reina, María
+García Padilla, Fernando José
