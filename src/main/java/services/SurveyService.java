@@ -15,13 +15,23 @@ public class SurveyService {
 	//Services
 	private QuestionService questionService;
 	
+	//Methods
+	public Survey create(){
+		String cookie = ""; //COOKIE DE LA CONEXIÓN
+		Assert.isTrue(isAuthenticated(cookie));
+		
+		Survey s = new Survey();
+		return s;
+	}
+	
 	public void save(Survey s){
 		String cookie = ""; //COOKIE DE LA CONEXIÓN
 		Assert.notNull(s);
-		Assert.isTrue(isAuthenticated(cookie));
+//		Assert.isTrue(isAuthenticated(cookie));
 		
 		for (Question o:s.getQuestions()){
 			questionService.save(o,s);
+			System.out.println(o);
 		}
 		surveyRepository.save(s);
 	}
