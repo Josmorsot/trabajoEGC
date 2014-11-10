@@ -1,22 +1,27 @@
 package domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Survey {
+public class Survey implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 749544364605664829L;
 	//Attributes
-	private String name;
+	private String title;
 	private String description;
-	private Date inicio;
-	private Date fin;
+	private Date startDate;
+	private Date endDate;
 	
 	//Methods
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getDescription() {
 		return description;
@@ -25,17 +30,17 @@ public class Survey {
 		this.description = description;
 	}
 	
-	public Date getInicio() {
-		return inicio;
+	public Date getStartDate() {
+		return startDate;
 	}
-	public void setInicio(Date inicio) {
-		this.inicio = inicio;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
-	public Date getFin() {
-		return fin;
+	public Date getEndDate() {
+		return endDate;
 	}
-	public void setFin(Date fin) {
-		this.fin = fin;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 	
 	//Relationships
@@ -51,6 +56,7 @@ public class Survey {
 	public List<Question> getQuestions() {
 		return questions;
 	}
+
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}

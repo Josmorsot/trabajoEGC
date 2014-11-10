@@ -28,7 +28,8 @@
 	<!-- Context -->
 
 	<import resource="config/packages.xml" />
-	<mvc:annotation-driven /> 
+	<mvc:annotation-driven>
+	</mvc:annotation-driven>
 
 	<!-- Data -->
 

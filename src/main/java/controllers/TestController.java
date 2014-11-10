@@ -20,9 +20,9 @@ public class TestController {
 	public Survey test(){
 		Survey s = new Survey();
 		s.setDescription("Votación generica");
-		s.setInicio(new Date(System.currentTimeMillis()));
-		s.setFin(new Date(System.currentTimeMillis()));
-		s.setName("Votación 10s");
+		s.setStartDate(new Date(System.currentTimeMillis()));
+		s.setEndDate(new Date(System.currentTimeMillis()));
+		s.setTitle("Votación 10s");
 		List<Question> lq = new LinkedList<Question>();
 		Question q = new Question();
 		List<String> l = new LinkedList<String>();
