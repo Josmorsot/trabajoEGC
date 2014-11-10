@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Survey implements Serializable{
+
+public class Survey extends DomainEntity implements Serializable{
 	
 	/**
 	 * 
@@ -15,6 +16,10 @@ public class Survey implements Serializable{
 	private String description;
 	private Date startDate;
 	private Date endDate;
+	
+	public Survey() {
+		super();
+	}
 	
 	//Methods
 	public String getTitle() {

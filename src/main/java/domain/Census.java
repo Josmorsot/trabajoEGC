@@ -1,5 +1,9 @@
 package domain;
 
-public class Census {
+public class Census extends DomainEntity {
 
+	
+	public Census() {
+		super();
+	}
 }

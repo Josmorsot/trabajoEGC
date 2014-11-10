@@ -3,13 +3,14 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Question{
+public class Question extends DomainEntity{
 	
 	//Attributes
 	private String text;
 	private List<String> options;
 	
 	public Question(){
+		super();
 		text="";
 		options=new ArrayList<String>();
 	}

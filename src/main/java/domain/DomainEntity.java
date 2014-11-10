@@ -20,9 +20,15 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Access(AccessType.PROPERTY)
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@JsonTypeInfo(include = JsonTypeInfo.As.PROPERTY,property = "class",use = JsonTypeInfo.Id.CLASS)
+@JsonIdentityInfo(property="@id",generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public abstract class DomainEntity {
 
 	// Constructors -----------------------------------------------------------
@@ -45,7 +51,7 @@ public abstract class DomainEntity {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
 	@Version
 	public int getVersion() {
 		return version;
@@ -54,6 +60,7 @@ public abstract class DomainEntity {
 	public void setVersion(int version) {
 		this.version = version;
 	}
+
 
 	// Equality ---------------------------------------------------------------
 
