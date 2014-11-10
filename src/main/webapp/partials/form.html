@@ -18,6 +18,7 @@
 	<div id="preguntas">
 		<div ng-repeat="q in qs track by $index">
 			<label>Pregunta {{$index+1}}</label>
+			<input type="hidden" value='{{survey.questions[$index].type="question"}}'>
 			<input type="text" ng-model="survey.questions[$index].text"/>
 		</div>
 	</div>
@@ -25,7 +26,7 @@
 		<button type="button" ng-click="addQuestionField()">A&ntilde;adir Pregunta</button>
 	</div>
 	<div>
-		<button type="button" ng-click="submit()">Enviar</button>
+		<button type="button" ng-click="submit(survey)">Enviar</button>
 	</div>
 	{{survey}}
 </form>

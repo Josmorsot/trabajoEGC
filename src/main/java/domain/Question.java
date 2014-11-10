@@ -33,15 +33,11 @@ public class Question extends DomainEntity{
 //	public void setOptions(List<String> options){
 //		this.options=options;
 //	}
-	
-	//RelationShips
-	private Survey survey;
 
-	public Survey getSurvey() {
-		return survey;
-	}
-	public void setSurvey(Survey survey) {
-		this.survey = survey;
+	@Override
+	public String toString() {
+		return "Question [text=" + text + "]";
 	}
 		
+	
 }

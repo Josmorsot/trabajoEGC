@@ -2,18 +2,19 @@ package controllers;
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
+import services.SurveyService;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import services.SurveyService;
 import domain.Survey;
 
 @RestController
@@ -21,17 +22,18 @@ import domain.Survey;
 public class SurveyController {
 
 	//Services
+	@Autowired
 	private SurveyService surveyService;
 	
 	//Methods
-	@RequestMapping("/save")
-	public @ResponseBody Survey save(@RequestBody String surveyJson) throws JsonParseException, JsonMappingException, IOException{
-		
+	
+	@RequestMapping(value="/save", method=RequestMethod.POST, headers="Content-Type=application/json")
+	public @ResponseBody void save(@RequestBody String surveyJson) throws JsonParseException, JsonMappingException, IOException{
 		ObjectMapper mapper = new ObjectMapper();
-		Survey s = mapper.readValue(surveyJson,Survey.class);
+		Survey s = mapper.readValue(surveyJson,Survey.class); 
 		surveyService.save(s);
+		System.out.println(surveyJson);
 		System.out.println(s);
-		return s;
 	}
 	
 }

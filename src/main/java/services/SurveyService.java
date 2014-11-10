@@ -1,18 +1,22 @@
 package services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.SurveyRepository;
 import domain.Census;
-import domain.Question;
 import domain.Survey;
-
+@Service
 public class SurveyService {
 
 	//Repositories
+	@Autowired
 	private SurveyRepository surveyRepository;
 	
 	//Services
+	@Autowired
 	private QuestionService questionService;
 	
 	//Methods
@@ -23,16 +27,11 @@ public class SurveyService {
 		Survey s = new Survey();
 		return s;
 	}
-	
+	@Transactional
 	public void save(Survey s){
 		String cookie = ""; //COOKIE DE LA CONEXIÓN
 		Assert.notNull(s);
 //		Assert.isTrue(isAuthenticated(cookie));
-		
-		for (Question o:s.getQuestions()){
-			questionService.save(o,s);
-			System.out.println(o);
-		}
 		surveyRepository.save(s);
 	}
 	

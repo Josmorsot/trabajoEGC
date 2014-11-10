@@ -21,14 +21,20 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Access(AccessType.PROPERTY)
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@JsonTypeInfo(include = JsonTypeInfo.As.PROPERTY,property = "class",use = JsonTypeInfo.Id.CLASS)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonIdentityInfo(property="@id",generator=ObjectIdGenerators.IntSequenceGenerator.class)
+@JsonSubTypes({
+	@Type(value=Survey.class, name="survey"),
+	@Type(value=Question.class, name="question")
+})
 public abstract class DomainEntity {
 
 	// Constructors -----------------------------------------------------------
