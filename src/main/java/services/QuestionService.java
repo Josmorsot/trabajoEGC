@@ -1,12 +1,14 @@
 package services;
 
+import javax.persistence.Entity;
+
 import org.springframework.util.Assert;
 
 import repositories.QuestionRepository;
+import domain.DomainEntity;
 import domain.Question;
 import domain.Survey;
-
-public class QuestionService {
+public class QuestionService extends DomainEntity{
 
 	//Repository
 	private QuestionRepository questionRepository;

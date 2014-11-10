@@ -4,7 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
+@Entity
 public class Survey extends DomainEntity implements Serializable{
 	
 	/**
@@ -52,12 +56,15 @@ public class Survey extends DomainEntity implements Serializable{
 	private Census census;
 	private List<Question>questions;
 	
+	@OneToOne()
 	public Census getCensus(){
 		return census;
 	}
 	public void setCensus(Census c){
 		this.census=c;
 	}
+	
+	@OneToMany()
 	public List<Question> getQuestions() {
 		return questions;
 	}
