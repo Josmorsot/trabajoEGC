@@ -18,7 +18,7 @@ public class SurveyService {
 	//Methods
 	public Survey create(){
 		String cookie = ""; //COOKIE DE LA CONEXIÓN
-		Assert.isTrue(isAuthenticated(cookie));
+//		Assert.isTrue(isAuthenticated(cookie));
 		
 		Survey s = new Survey();
 		return s;
