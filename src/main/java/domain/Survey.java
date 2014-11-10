@@ -3,13 +3,17 @@ package domain;
 import java.util.Date;
 import java.util.List;
 
-public class Survey {
+public class Survey extends DomainEntity{
 	
 	//Attributes
 	private String name;
 	private String description;
 	private Date inicio;
 	private Date fin;
+	
+	public Survey() {
+		super();
+	}
 	
 	//Methods
 	public String getName() {
