@@ -70,7 +70,16 @@ public class Survey extends DomainEntity implements Serializable{
 	//Relationships
 	private Census census;
 	private List<Question>questions;
+	private String usernameCreator;
 	
+	public String getUsernameCreator() {
+		return usernameCreator;
+	}
+
+	public void setUsernameCreator(String usernameCreator) {
+		this.usernameCreator = usernameCreator;
+	}
+
 	@OneToOne()
 	public Census getCensus(){
 		return census;
