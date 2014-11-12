@@ -22,14 +22,6 @@ public class SurveyService {
 	@Autowired
 	private QuestionService questionService;
 	
-	//Methods
-	public Survey create(){
-		String cookie = ""; //COOKIE DE LA CONEXIÓN
-//		Assert.isTrue(isAuthenticated(cookie));
-		
-		Survey s = new Survey();
-		return s;
-	}
 	@Transactional
 	public void save(Survey s){
 		String cookie = ""; //COOKIE DE LA CONEXIÓN
@@ -57,8 +49,7 @@ public class SurveyService {
 		return res;
 	}
 	
-	public List<Survey>allCreatedSurveys(){
-		String usernameCreator = "COOKIE";
+	public List<Survey>allCreatedSurveys(String usernameCreator){
 		List<Survey>res = surveyRepository.allCreatedSurveys(usernameCreator);
 		return res;
 	}

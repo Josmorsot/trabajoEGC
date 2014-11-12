@@ -1,13 +1,15 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
+import java.util.LinkedList;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -32,6 +34,7 @@ public class Survey extends DomainEntity implements Serializable{
 	
 	public Survey() {
 		super();
+		questions = new LinkedList<Question>();
 	}
 	
 	//Methods
@@ -69,7 +72,7 @@ public class Survey extends DomainEntity implements Serializable{
 	
 	//Relationships
 	private Census census;
-	private List<Question>questions;
+	private Collection<Question>questions;
 	private String usernameCreator;
 	
 	public String getUsernameCreator() {
@@ -88,13 +91,13 @@ public class Survey extends DomainEntity implements Serializable{
 		this.census=c;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, fetch= FetchType.EAGER)
 	@NotEmpty
-	public List<Question> getQuestions() {
+	public Collection<Question> getQuestions() {
 		return questions;
 	}
 
-	public void setQuestions(List<Question> questions) {
+	public void setQuestions(Collection<Question> questions) {
 		this.questions = questions;
 	}
 	public void addQuestion(Question q){

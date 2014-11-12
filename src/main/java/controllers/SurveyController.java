@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,6 +35,14 @@ public class SurveyController {
 		surveyService.save(s);
 		System.out.println(surveyJson);
 		System.out.println(s);
+	}
+	
+	@RequestMapping(value="/mine", method=RequestMethod.GET)
+	public Collection<Survey> findAllSurveyByCreator(){
+		String creator = "admin";
+		Collection <Survey> res = surveyService.allCreatedSurveys(creator);
+		System.out.println(res);
+		return res;
 	}
 	
 }
