@@ -45,4 +45,11 @@ public class SurveyController {
 		return res;
 	}
 	
+	@RequestMapping(value="/finishedSurveys", method=RequestMethod.GET)
+	public Collection<Survey> findAllfinishedSurveys(){
+		Collection <Survey> res = surveyService.allFinishedSurveys();
+		System.out.println(res);
+		return res;
+	}
+	
 }
