@@ -63,4 +63,15 @@ public class SurveyService {
 		
 		surveyRepository.delete(id);
 	}
+	
+	public Boolean posible (int id) {
+		Assert.notNull(id);
+		Survey s = findOne(id);
+		
+		if(s.getCensus()==null){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
