@@ -17,7 +17,6 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import domain.PosibleBorrar;
 import domain.Survey;
 
 @RestController
@@ -72,22 +71,18 @@ public class SurveyController {
 	}
 
 	// Método que borra una votación tras comprobar que no tiene censo relacionado.
-	@RequestMapping(value = "/posibleDelete",  method = RequestMethod.POST, headers = "Content-Type=application/json")
-	public @ResponseBody void delete(@RequestBody String posibleJson)
-			throws JsonParseException, JsonMappingException, IOException {
-		ObjectMapper mapper = new ObjectMapper();
-		PosibleBorrar posible = mapper.readValue(posibleJson, PosibleBorrar.class);
-		if (posible.getPosibilidad() == true) {
-			surveyService.delete(posible.getSurvey());
+	@RequestMapping(value="/delete", method = RequestMethod.GET)
+	public void delete(@RequestParam int id) {
+		Boolean posible = surveyService.posible(id);
+		if (posible == true) {
+			surveyService.delete(id);
 		} else {
 			System.out
 					.println("La votación no puede ser eliminada, tiene un censo relacionado.");
 		}
 	}
 
-	// Método devuelve una survey para los siguientes casos:
-	// Comprobar si se puede borrar, en el caso de que no tenga un censo relacionado. Relación con CREACION/ADMINISTRACION DE CENSO
-	// Realizar una votación. Relación con CABINA DE VOTACION
+	// Método devuelve una survey para realizar una votación. Relación con CABINA DE VOTACION
 	@RequestMapping(value="/delete", method = RequestMethod.GET)
 	public Survey getSurvey(@RequestParam int id) {
 		Survey s = surveyService.findOne(id);
