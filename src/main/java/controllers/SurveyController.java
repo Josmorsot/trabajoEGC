@@ -31,13 +31,14 @@ public class SurveyController {
 
 	// Método para guardar la votación creada.
 	@RequestMapping(value = "/save", method = RequestMethod.POST, headers = "Content-Type=application/json")
-	public @ResponseBody void save(@RequestBody String surveyJson)
+	public @ResponseBody Survey save(@RequestBody String surveyJson)
 			throws JsonParseException, JsonMappingException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		Survey s = mapper.readValue(surveyJson, Survey.class);
-		surveyService.save(s);
-		System.out.println(surveyJson);
-		System.out.println(s);
+		int i = surveyService.save(s);
+		Survey res = surveyService.findOne(i);
+//		return "{\"id\":\""+i+"\", \"fecha_ini\":\""+s.getStartDate().getDay()+"/"+s.getStartDate().getMonth()+"/"+s.getStartDate().getY+"\", \"fecha_fin\":\""+s.getEndDate()+"\", \"tituloVotacion\":\""+s.getTitle()+"\" }";
+		return res;
 	}
 
 	// Método para guardar la votación con el censo. Relación con CREACION/ADMINISTRACION DE CENSO.
@@ -47,8 +48,6 @@ public class SurveyController {
 		ObjectMapper mapper = new ObjectMapper();
 		Survey s = mapper.readValue(surveyJson, Survey.class);
 		surveyService.save(s);
-		System.out.println(surveyJson);
-		System.out.println(s);
 	}
 
 	// Método que devuelve la lista de votaciones creadas para editarlas.
@@ -57,7 +56,6 @@ public class SurveyController {
 	public Collection<Survey> findAllSurveyByCreator() {
 		String creator = "admin";
 		Collection<Survey> res = surveyService.allCreatedSurveys(creator);
-		System.out.println(res);
 		return res;
 	}
 
@@ -66,7 +64,6 @@ public class SurveyController {
 	@RequestMapping(value = "/finishedSurveys", method = RequestMethod.GET)
 	public Collection<Survey> findAllfinishedSurveys() {
 		Collection<Survey> res = surveyService.allFinishedSurveys();
-		System.out.println(res);
 		return res;
 	}
 
@@ -83,7 +80,7 @@ public class SurveyController {
 	}
 
 	// Método devuelve una survey para realizar una votación. Relación con CABINA DE VOTACION
-	@RequestMapping(value="/delete", method = RequestMethod.GET)
+	@RequestMapping(value="/survey", method = RequestMethod.GET)
 	public Survey getSurvey(@RequestParam int id) {
 		Survey s = surveyService.findOne(id);
 		return s;

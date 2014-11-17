@@ -13,10 +13,20 @@ cavControllers.controller('createController', function($scope, $http, $rootScope
 	};
 	$scope.submit = function(survey){
 		console.log(survey)
+		var dat = null;
 		$http.post("vote/save.do",survey).success(function(data,status){
-			if (status=200)
-				$location.path("/list");
+			if (status=200){
+				$http.get("/ADMCensus/census/create.do?idVotacion="+data.id+"&fecha_inicio="+data.startDate+"&fecha_fin="+data.endDate+"&tituloVotacion="+data.title).success(function(data,status){
+					if (status=200){
+						$location.path("/list");
+					}
+				});
+			}
 		});
+		
+		
+		
+		
 	};
 });
 cavControllers.controller('listController', function($scope, $http, $rootScope){
@@ -24,4 +34,16 @@ cavControllers.controller('listController', function($scope, $http, $rootScope){
 	$http.get("vote/mine.do").success(function(data,status){
 		$scope.surveys = data;
 	});
+	
+	$scope.borrar = function(survey){
+		$http.get("/ADMCensus/census/canDelete.do?idVotacion="+survey.id).success(function(data,status){
+			if (data[0].result){
+				
+			}
+		});
+	}
+	
+	$scope.goEditCensus=function(survey){
+		window.location="/ADMCensus/census/details.do?censusId="+survey.census;
+	}
 });
