@@ -12,6 +12,10 @@ h1{
 	color: blue;
 }
 
+body{
+	background-color: green;
+}
+
 .error {
 	color: red;
 	font-weight: bolder;
