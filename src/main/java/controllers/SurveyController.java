@@ -70,13 +70,7 @@ public class SurveyController {
 	// Método que borra una votación tras comprobar que no tiene censo relacionado.
 	@RequestMapping(value="/delete", method = RequestMethod.GET)
 	public void delete(@RequestParam int id) {
-		Boolean posible = surveyService.posible(id);
-		if (posible == true) {
 			surveyService.delete(id);
-		} else {
-			System.out
-					.println("La votación no puede ser eliminada, tiene un censo relacionado.");
-		}
 	}
 
 	// Método devuelve una survey para realizar una votación. Relación con CABINA DE VOTACION
